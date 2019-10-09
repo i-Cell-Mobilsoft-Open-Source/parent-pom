@@ -13,10 +13,21 @@
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
 	</properties>
 
+	<inceptionYear>2019</inceptionYear>
+
 	<organization>
 		<name>i-Cell Mobilsoft Zrt.</name>
 		<url>http://icellmobilsoft.hu</url>
 	</organization>
+
+	<developers>
+		<developer>
+			<id>icellmobilsoft.hu</id>
+			<name>icellmobilsoft.hu</name>
+			<organization>i-Cell Mobilsoft Zrt.</organization>
+			<organizationUrl>https://www.icellmobilsoft.hu</organizationUrl>
+		</developer>
+	</developers>
 
 	<build>
 		<pluginManagement>
