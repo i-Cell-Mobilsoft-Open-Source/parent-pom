@@ -1,0 +1,111 @@
+= Releaselési folyamat
+Mivel a projekt ősként szolgál a többi projekten, így azt figyelembe véve nem "klasszikus" release maven beállításokkal kell ellátni.
+Az ok hogy ennek a projekt beállításait leörökölné a cél projekt és az nagyon nem kívánt eseményekhez vezetne.
+Tehát minden release beállítást egy *parent-pom-release* `maven profile` alá kell rejteni.
+
+== Deploy
+Hogyha egy SNAPSHOT verziót akarunk kiadni a céges nexus szerverre a következő parancsokat kell használni:
+
+[source,bash]
+----
+mvn -B -Pparent-pom-release clean deploy source:jar
+----
+* _mvn_ maven executable parancs
+* _-B_ batch futás - ne kérjen be konzolból megerősítéseket a maven
+* _-Pparent-pom-release_ aktiválja a 'parent-pom-release' maven profilt
+* _clean_ kitörli a `*/target` mappákat
+* _deploy_ deploy parancs, ami a röviden fő lépésekben a következőket hajtja végre:
+** kompilálja a kódot
+** jar, war, pom csomagokat készít
+** elkészült jar, war, pom csomagokat bemásolja a lokális `.m2` repositoryba
+** elkészült jar, war, pom csomagokat feltolja a definiált `snapshotRepository` helyre, ami a céges nexust jelenti
+* _source:jar_ ez egy kapcsoló hogy az elkészült jar, war, pom csomagokkal együtt a forráskódokat is másolja/játsza fel a nexusba
+
+== Release
+Hogyha egy fix verziót akarunk kiadni SNAPSHOT jelölés nélkül.
+Maga a tiszta release folyamat 4 lépésből ál
+
+=== #1 Ellenőrzés
+Ez a lépés szolgál arra hogy technikai oldalról ellenőrizzük le, hogy a maven minden beállítása és release követelménye megvan.
+Röviden a következő történik:
+* minden változás commitolva van
+* fordítható a kód
+* tesztek sikeresen le tudnak futni
+* SCM beállítások megvannak
+* sikeres a verzióemelés próbálkozás
+
+[source,bash]
+----
+mvn -B -Pparent-pom-release release:prepare -DdryRun=true
+----
+* _mvn_ maven executable parancs
+* _-B_ batch futás - ne kérjen be konzolból megerősítéseket a maven
+* _-Pparent-pom-release_ aktiválja a 'parent-pom-release' maven profilt
+* _release:prepare_ maven-release-plugin része, indítja az SCM oldali verzió kiadását
+* *_-DdryRun=true_* kapcsoló hogy az verzió kiadás csak "virtuális" legyen, tehát hogy csak ellenőrzés céljából indítjuk
+
+Ennek a lépésnek le kell futnia minden hibajelentés nélkül. Esetleges hibákat javítani kell, mert a valós verziókiadás sem fog lefutni.
+
+=== #2 Tisztítás
+A próba során létrejött temp fájlokat töröljük, ne zavarjanak a valódi verziókiadásnál.
+
+[source,bash]
+----
+mvn -B release:clean
+----
+* _mvn_ maven executable parancs
+* _-B_ batch futás - ne kérjen be konzolból megerősítéseket a maven
+* _release:clean_ maven-release-plugin része, tisztítja a `target` könyvtárat és törli a temporális release fájlokat
+
+=== #3 SCM verzió módosítás
+Ha sikeres az #1 és #2 lépés, valós SCM verzió kiadását indítjuk
+
+[source,bash]
+----
+mvn -B -Pparent-pom-release release:prepare
+----
+* _mvn_ maven executable parancs
+* _-B_ batch futás - ne kérjen be konzolból megerősítéseket a maven
+* _-Pparent-pom-release_ aktiválja a 'parent-pom-release' maven profilt
+* _release:prepare_ maven-release-plugin része, indítja az SCM oldali verzió kiadását
+
+Ez a lépés gyakran hibára fut első futásnál (új környezetben), melyeknek a legfőbb oka ezek szoktak lenni:
+* környezeti beállítások nincsenek felkészülve konzolos maven, git és java futásra
+* lokális `settings.xml` fájlban nincsenek rözgítve a pom.xml-ben szereplő szerverek authentikációs adatai
+* a java verzióban nincsenek benne a szerverek tanusítványai (ez szok lenni a legnyagyobb szívás)
+
+A parancs röviden a következő lépéseket csinálja:
+
+* #1 pontban leírt ellenőrzések
+* "-SNAPSHOT" levágása a verziószámból
+* compile
+* lokális `.m2` könyvtár feltöltése
+* commit
+* tag létrehozása
+* verziószám növelése + "-SNAPSHOT" kiegészítés
+* compile
+* commit
+
+A parancs lefutása után a lokális fájlokban a verziószám növelve és commitolva lessz.
+A fájlok között megtalálhatók a *release temporális fájlok, melyeket nem szabad kitörölni!* 
+
+=== #4 Nexus feltöltés
+Ha elkészülünk a #3 pontal akkor már csak a csomagok elkészítése marad hátra.
+Fontos hogy a #3 pont temporális fájljai ott legyen a projektben!
+
+----
+mvn -B -Pparent-pom-release release:perform
+----
+* _mvn_ maven executable parancs
+* _-B_ batch futás - ne kérjen be konzolból megerősítéseket a maven
+* _-Pparent-pom-release_ aktiválja a 'parent-pom-release' maven profilt
+* _release:perform_ maven-release-plugin része, indítja a nexus oldali verzió kiadását:
+** leszedi a temporális fájlokban jelölt SCM TAG-el jelölt forráskódot
+** compile, jar, war, pom, source csomagok létrehozása
+** feltölti a nexusba
+
+A leggyakoribb hiba szok lenni hogy a nexus szerveren SSL tanusítvány nincs benne a java verziónkban, ezért a futás hibára fut.
+
+== Release problémák
+Sajnos nem fog mindig sikerrrel végződni a fenti 4 lépés, ilyenkor sokszor javításokat kell elvégezni.
+A leggyakrabbi eseteket és azoknak a javítási lépései a következő pontokban vannak kifejtve.

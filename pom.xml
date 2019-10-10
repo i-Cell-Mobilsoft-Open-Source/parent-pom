@@ -29,6 +29,10 @@
 		</developer>
 	</developers>
 
+	<scm>
+		<developerConnection>${developerConnection}</developerConnection>
+	</scm>
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -50,7 +54,7 @@
 					<configuration>
 						<scmCommentPrefix>maven release:</scmCommentPrefix>
 						<useReleaseProfile>true</useReleaseProfile>
-						<releaseProfiles>package</releaseProfiles>
+						<!-- <releaseProfiles>package</releaseProfiles> -->
 					</configuration>
 				</plugin>
 				<plugin>
@@ -290,6 +294,33 @@
 					</plugins>
 				</pluginManagement>
 			</build>
+		</profile>
+
+		<profile>
+			<id>parent-pom-release</id>
+
+			<properties>
+				<project.scm.id>icell-git-server</project.scm.id>
+				<developerConnection>scm:git:https://bitbucket.icellmobilsoft.hu/scm/frmw/parent-pom.git</developerConnection>
+			</properties>
+
+			<distributionManagement>
+				<repository>
+					<uniqueVersion>false</uniqueVersion>
+					<id>icell-releases</id>
+					<name>i-Cell Releases</name>
+					<url>https://nexus.icellmobilsoft.hu/repository/releases/</url>
+					<layout>default</layout>
+				</repository>
+
+				<snapshotRepository>
+					<uniqueVersion>true</uniqueVersion>
+					<id>icell-snapshots</id>
+					<name>i-Cell Snapshots</name>
+					<url>https://nexus.icellmobilsoft.hu/repository/snapshots</url>
+					<layout>default</layout>
+				</snapshotRepository>
+			</distributionManagement>
 		</profile>
 	</profiles>
 
