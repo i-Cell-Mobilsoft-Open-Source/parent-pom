@@ -3,7 +3,7 @@
 
 	<groupId>hu.icellmobilsoft</groupId>
 	<artifactId>parent-pom</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -29,7 +29,7 @@
 
 	<scm>
 		<developerConnection>${developerConnection}</developerConnection>
-	  <tag>parent-pom-0.0.1</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<build>
