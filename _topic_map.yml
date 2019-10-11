@@ -1,0 +1,8 @@
+---
+Name: Parent POM documentation
+Dir: docs
+Topics:
+    - Name: Index
+      File: indexTopic
+    - Name: Release HOWTO
+      File: releaseTopic
