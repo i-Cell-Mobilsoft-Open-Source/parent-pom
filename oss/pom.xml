@@ -6,7 +6,6 @@
 		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
-	<groupId>hu.icellmobilsoft</groupId>
 	<artifactId>parent-oss-pom</artifactId>
 	<packaging>pom</packaging>
 
@@ -22,15 +21,6 @@
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
-
-	<developers>
-		<developer>
-			<id>icellmobilsoft.hu</id>
-			<name>icellmobilsoft.hu</name>
-			<organization>i-Cell Mobilsoft Zrt.</organization>
-			<organizationUrl>https://www.icellmobilsoft.hu</organizationUrl>
-		</developer>
-	</developers>
 
 	<build>
 		<pluginManagement>

@@ -29,8 +29,8 @@
 
 	<scm>
 		<developerConnection>${developerConnection}</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+		<tag>HEAD</tag>
+	</scm>
 
 	<build>
 		<pluginManagement>

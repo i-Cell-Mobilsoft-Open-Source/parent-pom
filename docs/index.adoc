@@ -6,7 +6,9 @@
 Java projektek fő pom.xml őse.
 
 A projekt arra célra készült hogy cégben a projektek azonos általános beállításokkal működjenek.
-Összegűjti a közös beállításokat és azonosítókat így elkerülhetó a fejlesztő beállítás összeakadása (projektek átülésénél) és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
+Összegűjti a közös beállításokat és azonosítókat így elkerülhető a fejlesztő beállítások összeakadása (pl. projektek átülésénél) és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
 Ez melett segít frissen tartani a plugineket, bugok eséten közös workaround megoldásokat és céges azonosításokat.
+
+include::pom/pom.adoc[leveloffset=+1]
 
 include::release/release-howto.adoc[leveloffset=+1]
