@@ -1,5 +1,5 @@
 = POM struktúra
-A projekt tartalmaz több pom.xml fájlt, mely mindig célzotabban közelíti meg a beállításokat.
+A projekt tartalmaz több pom.xml fájlt, mely mindig célzottabban közelíti meg a beállításokat.
 
 == parent-pom
 Ez a legfelső pom.xml fájl. Ebből indul ki minden többi pom.xml.
@@ -11,7 +11,7 @@ Ez a legfelső pom.xml fájl. Ebből indul ki minden többi pom.xml.
 <artifactId>parent-pom</artifactId>
 ----
 
-Tartalma csak olyan elemeket tartalmaz ami teljes általános, icellmobillsoft cég utaló beállítások:
+Tartalma csak teljesen általános elemekből áll, icellmobilsoft cégre utaló beállítások:
 
 * Beállítások:
 ** UTF-8 karakter kódolás
@@ -30,7 +30,7 @@ Tartalma csak olyan elemeket tartalmaz ami teljes általános, icellmobillsoft c
 ** parent-pom-release - kézzel kell aktiválni hogyha a 'parent-pom'-ból új release-t készítünk
 
 == parent-icellmobilsoft-pom
-Ez egy 'gyerek' pom, ami leörökli a parent-pom összes beállításait, és kiegészíti azt az icellmobilsoft domain specifikus beállításokkal.
+Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kiegészíti azt az icellmobilsoft domain specifikus beállításokkal.
 
 .icellmobilsoft/pom.xml
 [source,xml]
@@ -51,7 +51,7 @@ Tartalma minimális, csak kiégészíti a fő pom.xml-t:
 *** Release tárhely
 
 == parent-oss-pom
-Ez egy 'gyerek' pom, ami leörökli a parent-pom összes beállításait, és kiegészíti azt az icellmobilsoft open source specifikus beállításokkal.
+Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kiegészíti azt az icellmobilsoft open source specifikus beállításokkal.
 
 .oss/pom.xml
 [source,xml]
@@ -65,12 +65,12 @@ Ezek közé tartoznak a következők:
 
 * Beállítások:
 ** license
-* pluginManagement
-* release profil
+** pluginManagement
+** release profil
 ** distributionManagement
 ** gpg aláírás
 ** sonatype public nexus plugin kezelés
 
 A 'parent-oss-pom' jelenleg HOW-TO jellegű, ahhoz hogy valóban lehessen használni valami projekten,
 publikálni kellene a public maven centralba (az egész 'parent-pom' projektet).
-Ez aktuálisan még nem történt meg, egyenlőre copy-paste a megadott open source projektbe jeleggel kell kezelni.
+Ez aktuálisan még nem történt meg, egyenlőre copy-paste a megadott open source projektbe jelleggel kell kezelni.
