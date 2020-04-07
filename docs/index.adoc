@@ -6,8 +6,8 @@
 Java projektek fő pom.xml őse.
 
 A projekt arra célra készült hogy cégben a projektek azonos általános beállításokkal működjenek.
-Összegűjti a közös beállításokat és azonosítókat így elkerülhető a fejlesztő beállítások összeakadása (pl. projektek átülésénél) és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
-Ez melett segít frissen tartani a plugineket, bugok eséten közös workaround megoldásokat és céges azonosításokat.
+Összegyűjti a közös beállításokat és azonosítókat, így elkerülhető a fejlesztői beállítások összeakadása (pl. projektek átülésénél) és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
+Emellett segít frissen tartani a plugineket, bugok eséten közös workaround megoldásokat és céges azonosításokat.
 
 include::pom/pom.adoc[leveloffset=+1]
 
