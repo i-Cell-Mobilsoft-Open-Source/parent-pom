@@ -19,10 +19,6 @@
 	<description>Parent pom for i-Cell Mobilsoft Zrt. projects</description>
 	<url>https://github.com/icellmobilsoft/parent-pom</url>
 
-	<prerequisites>
-		<maven>3.3.0</maven>
-	</prerequisites>
-
 	<organization>
 		<name>i-Cell Mobilsoft Zrt.</name>
 		<url>https://icellmobilsoft.hu</url>
