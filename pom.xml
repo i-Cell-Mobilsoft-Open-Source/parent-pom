@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>hu.icellmobilsoft</groupId>
@@ -13,9 +15,17 @@
 
 	<inceptionYear>2019</inceptionYear>
 
+	<name>icellmobilsoft parent pom</name>
+	<description>Parent pom for i-Cell Mobilsoft Zrt. projects</description>
+	<url>https://github.com/icellmobilsoft/parent-pom</url>
+
+	<prerequisites>
+		<maven>3.3.0</maven>
+	</prerequisites>
+
 	<organization>
 		<name>i-Cell Mobilsoft Zrt.</name>
-		<url>http://icellmobilsoft.hu</url>
+		<url>https://icellmobilsoft.hu</url>
 	</organization>
 
 	<developers>
@@ -27,8 +37,24 @@
 		</developer>
 	</developers>
 
+	<issueManagement>
+		<system>github issues</system>
+		<url>https://github.com/icellmobilsoft/parent-pom/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
+
 	<scm>
+		<connection>${developerConnection}</connection>
 		<developerConnection>${developerConnection}</developerConnection>
+		<url>https://github.com/icellmobilsoft/parent-pom.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -53,7 +79,6 @@
 					<configuration>
 						<scmCommentPrefix>maven release:</scmCommentPrefix>
 						<useReleaseProfile>true</useReleaseProfile>
-						<!-- <releaseProfiles>package</releaseProfiles> -->
 					</configuration>
 				</plugin>
 				<plugin>
@@ -122,8 +147,6 @@
 							</manifest>
 							<manifestEntries>
 								<create-date>${maven.build.timestamp}</create-date>
-								<!-- <git-commit>${buildNumber}</git-commit> -->
-								<!-- <git-branch>${scmBranch}</git-branch> -->
 							</manifestEntries>
 						</archive>
 					</configuration>
@@ -141,9 +164,6 @@
 							</manifest>
 							<manifestEntries>
 								<create-date>${maven.build.timestamp}</create-date>
-								<!-- <git-commit>${buildNumber}</git-commit> -->
-								<!-- <git-branch>${scmBranch}</git-branch> -->
-								<!-- <Logging-Profile>${project.name}</Logging-Profile> -->
 							</manifestEntries>
 						</archive>
 						<nonFilteredFileExtensions>
@@ -181,6 +201,14 @@
 						<encoding>${project.build.sourceEncoding}</encoding>
 						<failOnError>false</failOnError>
 					</configuration>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -225,10 +253,6 @@
 		</pluginManagement>
 
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.codehaus.mojo</groupId> -->
-			<!-- <artifactId>buildnumber-maven-plugin</artifactId> -->
-			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
@@ -299,27 +323,59 @@
 			<id>parent-pom-release</id>
 
 			<properties>
-				<project.scm.id>icell-git-server</project.scm.id>
-				<developerConnection>scm:git:https://bitbucket.icellmobilsoft.hu/scm/frmw/parent-pom.git</developerConnection>
+				<project.scm.id>icell-github-server</project.scm.id>
+				<developerConnection>scm:git:git@github.com:icellmobilsoft/parent-pom.git</developerConnection>
+
+				<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 			</properties>
 
 			<distributionManagement>
-				<repository>
-					<uniqueVersion>false</uniqueVersion>
-					<id>icell-releases</id>
-					<name>i-Cell Releases</name>
-					<url>https://nexus.icellmobilsoft.hu/repository/releases/</url>
-					<layout>default</layout>
-				</repository>
-
 				<snapshotRepository>
-					<uniqueVersion>true</uniqueVersion>
-					<id>icell-snapshots</id>
-					<name>i-Cell Snapshots</name>
-					<url>https://nexus.icellmobilsoft.hu/repository/snapshots</url>
-					<layout>default</layout>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/content/repositories/snapshots</url>
 				</snapshotRepository>
+				<repository>
+					<id>ossrh</id>
+					<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+				</repository>
 			</distributionManagement>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>${nexus-staging-maven-plugin.version}</version>
+						<extensions>true</extensions>
+						<configuration>
+							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+							<serverId>ossrh</serverId>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+							<keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 
