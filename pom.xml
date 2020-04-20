@@ -17,7 +17,7 @@
 
 	<name>icellmobilsoft parent pom</name>
 	<description>Parent pom for i-Cell Mobilsoft Zrt. projects</description>
-	<url>https://github.com/icellmobilsoft/parent-pom</url>
+	<url>https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom</url>
 
 	<organization>
 		<name>i-Cell Mobilsoft Zrt.</name>
@@ -35,7 +35,7 @@
 
 	<issueManagement>
 		<system>github issues</system>
-		<url>https://github.com/icellmobilsoft/parent-pom/issues</url>
+		<url>https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom/issues</url>
 	</issueManagement>
 
 	<licenses>
@@ -50,7 +50,7 @@
 	<scm>
 		<connection>${developerConnection}</connection>
 		<developerConnection>${developerConnection}</developerConnection>
-		<url>https://github.com/icellmobilsoft/parent-pom.git</url>
+		<url>https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -320,7 +320,7 @@
 
 			<properties>
 				<project.scm.id>icell-github-server</project.scm.id>
-				<developerConnection>scm:git:git@github.com:icellmobilsoft/parent-pom.git</developerConnection>
+				<developerConnection>scm:git:git@github.com:i-Cell-Mobilsoft-Open-Source/parent-pom.git</developerConnection>
 
 				<nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
 			</properties>

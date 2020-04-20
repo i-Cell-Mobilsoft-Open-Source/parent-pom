@@ -1,0 +1,8 @@
+:toc: left
+:toclevels: 3
+:sectnums:
+
+= parent-pom
+
+Általános maven fő pom.xml, amit minden i-Cell Mobilsoft Zrt. projekt tartalmaz.
+A célja hogy egy helyen öszpontosítja az általános maven és plugin beállításokat.
