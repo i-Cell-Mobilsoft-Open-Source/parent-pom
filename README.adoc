@@ -5,4 +5,41 @@
 = parent-pom
 
 Általános maven fő pom.xml, amit minden i-Cell Mobilsoft Zrt. projekt tartalmaz.
-A célja hogy egy helyen öszpontosítja az általános maven és plugin beállításokat.
+A célja hogy egy helyen összpontosítja az általános maven és plugin beállításokat.
+
+== Maven central
+A projekt buildelve van a official maven repository-ba is,
+így a projektek automatán lehúzzák:
+
+.Általános beállítások
+[source, xml]
+----
+    <dependency>
+        <groupId>hu.icellmobilsoft.pom</groupId>
+        <artifactId>parent-pom</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+----
+
+.icellmobilsoft nexus beállítások
+[source, xml]
+----
+    <dependency>
+        <groupId>hu.icellmobilsoft.pom</groupId>
+        <artifactId>parent-icellmobilsoft-pom</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+----
+
+.icellmobilsoft open-source projektek beállítása
+[source, xml]
+----
+    <dependency>
+        <groupId>hu.icellmobilsoft.pom</groupId>
+        <artifactId>parent-oss-pom</artifactId>
+        <version>1.1.0</version>
+    </dependency>
+----
+
+== Leírás
+Bővebb leírás a https://i-cell-mobilsoft-open-source.github.io/parent-pom/ oldalon található.
