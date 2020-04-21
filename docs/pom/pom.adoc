@@ -7,7 +7,7 @@ Ez a legfelső pom.xml fájl. Ebből indul ki minden többi pom.xml.
 .pom.xml
 [source,xml]
 ----
-<groupId>hu.icellmobilsoft</groupId>
+<groupId>hu.icellmobilsoft.pom</groupId>
 <artifactId>parent-pom</artifactId>
 ----
 
@@ -35,7 +35,7 @@ Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kieg
 .icellmobilsoft/pom.xml
 [source,xml]
 ----
-<groupId>hu.icellmobilsoft</groupId>
+<groupId>hu.icellmobilsoft.pom</groupId>
 <artifactId>parent-icellmobilsoft-pom</artifactId>
 ----
 
@@ -56,7 +56,7 @@ Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kieg
 .oss/pom.xml
 [source,xml]
 ----
-<groupId>hu.icellmobilsoft</groupId>
+<groupId>hu.icellmobilsoft.pom</groupId>
 <artifactId>parent-oss-pom</artifactId>
 ----
 
