@@ -1,0 +1,14 @@
+= v1.1.0 → v1.2.0
+
+parent-pom v1.1.0 -> v1.2.0 migrációs leírás, újdonságok, változások leírása
+
+== Újdonságok
+
+=== parent-icellmobilsoft-pom
+
+Fel lett cserélve a repository sorrendje,
+hogy a `icell-public-repository` legyen az első helyen,
+ezzel optimalizálva a CI/CD belső folyamatainkat.
+
+==== Átállás
+A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.

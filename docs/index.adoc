@@ -12,3 +12,5 @@ Emellett segít frissen tartani a plugineket, bugok eséten közös workaround m
 include::pom/pom.adoc[leveloffset=+1]
 
 include::release/release-howto.adoc[leveloffset=+1]
+
+include::migration.adoc[leveloffset=+1]
