@@ -13,6 +13,17 @@
 		<repository>
 			<releases>
 				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>icell-public-repository</id>
+			<name>Internal Release Repository</name>
+			<url>https://nexus.icellmobilsoft.hu/repository/public/</url>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>
 			</releases>
 			<snapshots>
@@ -33,17 +44,6 @@
 			<id>central</id>
 			<name>Central Repository</name>
 			<url>https://repo.maven.apache.org/maven2</url>
-		</repository>
-		<repository>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>icell-public-repository</id>
-			<name>Internal Release Repository</name>
-			<url>https://nexus.icellmobilsoft.hu/repository/public/</url>
 		</repository>
 	</repositories>
 
