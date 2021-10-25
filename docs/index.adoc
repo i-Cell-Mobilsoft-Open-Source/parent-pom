@@ -1,6 +1,7 @@
 :toc: left
 :toclevels: 3
 :sectnums:
+:doctype: book
 
 = Parent Pom
 Java projektek fő pom.xml őse.
@@ -9,6 +10,12 @@ A projekt arra célra készült hogy cégben a projektek azonos általános beá
 Összegyűjti a közös beállításokat és azonosítókat, így elkerülhető a fejlesztői beállítások összeakadása (pl. projektek átülésénél) és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
 Emellett segít frissen tartani a plugineket, bugok eséten közös workaround megoldásokat és céges azonosításokat.
 
+.Minimum feltételek
+* Java 8+
+* Maven 3.3.0+
+
 include::pom/pom.adoc[leveloffset=+1]
 
 include::release/release-howto.adoc[leveloffset=+1]
+
+include::migration.adoc[leveloffset=+1]

@@ -1,0 +1,43 @@
+= v1.1.0 → v1.2.0
+
+parent-pom v1.1.0 -> v1.2.0 migrációs leírás, újdonságok, változások leírása
+
+== Újdonságok
+
+=== parent-icellmobilsoft-pom
+
+Fel lett cserélve a repository sorrendje,
+hogy a `icell-public-repository` legyen az első helyen,
+ezzel optimalizálva a CI/CD belső folyamatainkat.
+
+==== Átállás
+A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.
+
+=== parent-pom
+
+.Plugin firssítések:
+* maven-gpg-plugin 1.6 -> https://issues.apache.org/jira/browse/MGPG-81?jql=project%20%3D%20MGPG%20AND%20fixVersion%20in%20(%223.0.0%20(cancelled)%22%2C%203.0.1)%20ORDER%20BY%20created%20DESC[3.0.1]
+* maven-antrun-plugin 1.8 -> https://blogs.apache.org/maven/entry/apache-maven-antrun-plugin-version[3.0.0] 
+* maven-assembly-plugin 3.1.1 -> https://blogs.apache.org/maven/entry/apache-maven-assembly-plugin-version1[3.3.0]
+* maven-dependency-plugin 3.1.1 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12348705&styleName=&projectId=12317227&Create=Create&atl_token=A5KQ-2QAV-T4JA-FDED_bc2b12045c52c2d74ddb81da3091e45444b4ca7c_lout[3.2.0]
+* maven-release-plugin 2.5.3 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12348079&styleName=&projectId=12317824&Create=Create&atl_token=A5KQ-2QAV-T4JA-FDED_bc2b12045c52c2d74ddb81da3091e45444b4ca7c_lout[3.0.0-M4]
+* maven-resources-plugin 3.1.0 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12343158&styleName=&projectId=12317827&Create=Create&atl_token=A5KQ-2QAV-T4JA-FDED_bc2b12045c52c2d74ddb81da3091e45444b4ca7c_lout[3.2.0]
+* maven-surefire-plugin 3.0.0-M3 -> https://blog.soebes.de/blog/2020/06/19/apache-maven-surefire-version-3-dot-0-0-m5-release/[3.0.0-M5]
+* maven-failsafe-plugin 3.0.0-M3 -> https://maven.apache.org/surefire/maven-failsafe-plugin/index.html[3.0.0-M5]
+* maven-jar-plugin 3.1.1 -> https://blogs.apache.org/maven/entry/apache-maven-jar-plugin-version3[3.2.0]
+* maven-war-plugin 3.2.2 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12348574&styleName=&projectId=12318121&Create=Create&atl_token=A5KQ-2QAV-T4JA-FDED_bc2b12045c52c2d74ddb81da3091e45444b4ca7c_lout[3.3.2]
+* maven-site-plugin 3.7.1 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12317923&version=12347781[3.9.1]
+* maven-javadoc-plugin 3.1.0 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12347807&styleName=&projectId=12317529&Create=Create&atl_token=A5KQ-2QAV-T4JA-FDED_bc2b12045c52c2d74ddb81da3091e45444b4ca7c_lout[3.3.1]
+* maven-source-plugin 3.0.1 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12317924&version=12346480[3.2.1]
+* build-helper-maven-plugin 3.0.0 -> https://www.mail-archive.com/users@maven.apache.org/msg142335.html[3.2.0]
+* maven-enforcer-plugin 3.0.0-M2 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12346527&styleName=&projectId=12317520&Create=Create&atl_token=A5KQ-2QAV-T4JA-FDED_bc2b12045c52c2d74ddb81da3091e45444b4ca7c_lout[3.0.0]
+* asciidoctor-maven-plugin 1.6.0 -> https://github.com/asciidoctor/asciidoctor-maven-plugin/releases[2.2.1]
+https://gist.github.com/abelsromero/263ae7703f4bc5efebbfd16d9e407c28[Itt] található 1.6.0 -> v2 váltás migrációs leírás
+* asciidoctorj-diagram 2.0.1 -> https://github.com/asciidoctor/asciidoctor-diagram/blob/master/CHANGELOG.adoc[2.2.1]
+
+==== Átállás
+A pluginek többsége java 7 és 8 minimum requirement-esek,
+tehát minimum Java8 szükséges a projekten.
+
+Általánosan nem várható probléma, esetleg az asciidoc plugin használatánál,
+de valószinű az sem critical szint.
