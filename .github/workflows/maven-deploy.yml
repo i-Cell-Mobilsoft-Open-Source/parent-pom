@@ -38,8 +38,10 @@ jobs:
       run: mvn -B  package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -B -Pparent-pom-release deploy -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
       env:
-        GITHUB_TOKEN: '${{ secrets.GH_TOKEN_TECHUSER_JAVA }}'
+        GPG_KEY_ID_GITHUB_TECHUSER: ${{ secrets.GPG_KEY_ID_GITHUB_TECHUSER }}
         OSSRH_USERNAME: '${{ secrets.OSS_SONATYPE_ORG_USER }}'
         OSSRH_PASSWORD: '${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}'
+
+      run: mvn -B -Pparent-pom-release deploy -Dgpg.keyname=$GPG_KEY_ID_GITHUB_TECHUSER -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
+
