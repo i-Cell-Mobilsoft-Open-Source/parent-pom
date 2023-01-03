@@ -34,7 +34,6 @@ jobs:
         server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
         server-username: ${{ secrets.OSS_SONATYPE_ORG_USER }}
         server-password: ${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}
-        gpg-private-key: ${{ secrets.SSH_PRIVATE_KEY_GITHUB_TECHUSER }}
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
