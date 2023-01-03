@@ -1,4 +1,7 @@
-image:https://img.shields.io/github/workflow/status/i-Cell-Mobilsoft-Open-Source/parent-pom/Compile project?style=plastic[GitHub Workflow Status]
+image:https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom/actions/workflows/compile.yml/badge.svg?style=plastic&branch=master[GitHub Compile workflow status in master branch]
+image:https://img.shields.io/maven-central/v/hu.icellmobilsoft.pom/parent-pom?logo=apache-maven&style=for-the-badge)[Maven central version of Parent pom project]
+image:https://img.shields.io/github/license/i-Cell-Mobilsoft-Open-Source/parent-pom?style=plastic&logo=apache[License of Parent pom project]
+image:https://img.shields.io/badge/JVM-8,11,17-brightgreen.svg?style=plastic&logo=openjdk[Supported JVM Versions]
 
 :toc: left
 :toclevels: 3

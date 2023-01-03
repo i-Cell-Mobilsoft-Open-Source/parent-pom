@@ -1,4 +1,5 @@
 = POM struktúra
+
 A projekt tartalmaz több pom.xml fájlt, mely mindig célzottabban közelíti meg a beállításokat.
 
 == parent-pom
@@ -13,24 +14,27 @@ Ez a legfelső pom.xml fájl. Ebből indul ki minden többi pom.xml.
 
 Tartalma csak teljesen általános elemekből áll, icellmobilsoft cégre utaló beállítások:
 
-* Beállítások:
-** UTF-8 karakter kódolás
-** dátum formátum
-** organization
-** developers
-* Definíciók:
-** maven plugin:
-*** verziók
-*** workaroundok
-*** általános beállítások
-** maven verzió minimum követelmény
-* Profilok:
-** jdk8 - aktiválódik hogyha JDK 8 -es környezettel kompiláljuk a projektet
-** jdk11 - aktiválódik hogyha JDK 11 -es környezettel kompiláljuk a projektet
-** jdk17 - aktiválódik hogyha JDK 17 -es környezettel kompiláljuk a projektet
-** parent-pom-release - kézzel kell aktiválni hogyha a 'parent-pom'-ból új release-t készítünk
+.Beállítások:
+* UTF-8 karakter kódolás
+* dátum formátum
+* organization
+* developers
+
+.Definíciók:
+* maven plugin:
+** verziók
+** workaroundok
+** általános beállítások
+* maven verzió minimum követelmény
+
+.Profilok:
+* jdk8 - aktiválódik hogyha JDK 8 -es környezettel kompiláljuk a projektet
+* jdk11 - aktiválódik hogyha JDK 11 -es környezettel kompiláljuk a projektet
+* jdk17 - aktiválódik hogyha JDK 17 -es környezettel kompiláljuk a projektet
+* parent-pom-release - kézzel kell aktiválni hogyha a 'parent-pom'-ból új release-t készítünk
 
 == parent-icellmobilsoft-pom
+
 Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kiegészíti azt az icellmobilsoft domain specifikus beállításokkal.
 
 .icellmobilsoft/pom.xml
@@ -42,16 +46,17 @@ Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kieg
 
 Tartalma minimális, csak kiégészíti a fő pom.xml-t:
 
-* Beállítások:
-** Repository (plugin repository is):
-*** jboss maven
-*** maven central
-*** icellmobilsoft nexus
-** Distribution Management
-*** Snapshot tárhely
-*** Release tárhely
+.Beállítások:
+* Repository (plugin repository is):
+** icellmobilsoft nexus
+** jboss maven
+** maven central
+* Distribution Management
+** Snapshot tárhely
+** Release tárhely
 
 == parent-oss-pom
+
 Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kiegészíti azt az icellmobilsoft open source specifikus beállításokkal.
 
 .oss/pom.xml
@@ -64,14 +69,11 @@ Ez egy 'gyerek' pom, ami örökli a parent-pom összes beállításait, és kieg
 Tartalma az aktuális public maven central publikálásához szükséges beállításait célozza meg.
 Ezek közé tartoznak a következők:
 
-* Beállítások:
-** license
-** pluginManagement
-** release profil
-** distributionManagement
-** gpg aláírás
-** sonatype public nexus plugin kezelés
+.Beállítások:
 
-A 'parent-oss-pom' jelenleg HOW-TO jellegű, ahhoz hogy valóban lehessen használni valami projekten,
-publikálni kellene a public maven centralba (az egész 'parent-pom' projektet).
-Ez aktuálisan még nem történt meg, egyenlőre copy-paste a megadott open source projektbe jelleggel kell kezelni.
+* license
+* pluginManagement
+* release profil
+* distributionManagement
+* gpg aláírás
+* sonatype public nexus plugin kezelés
