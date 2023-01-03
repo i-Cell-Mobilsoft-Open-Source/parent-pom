@@ -13,21 +13,6 @@ ezzel optimalizálva a CI/CD belső folyamatainkat.
 ==== Átállás
 A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.
 
-=== github workflow
-
-.Action frissítések
-* actions/checkout frissítése v2 -> v3-ra
-* actions/setup-java frissítése v1 -> v3-ra
-* fregante/setup-git-token@v1 action kikerült a manual release folyamatból, feladatát potolja a actions/checkout@v3.with.token +  git config parancsok
-
-Buildeléshez használt java verzió frissítve lett jdk 8-ról jdk 17-re (temurin disrtibúció).
-
-Complie job átalakításra került, és matrix configurációt kapott amiben az operációs rendszer és a 11 valamint a 17-es java verzió van minden lehetséges variációban megadva a buildelési folyamatnak.
-
-Dokumentum generálásnál a java verzió 17-re lett emelve így az asciidoctor-maven-plugin verziója 2.2.2 verzióra lett emelve.
-
-Manual release indításához czenczl felhasználó is bekerült.
-
 ==== Átállás
 
 A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.
