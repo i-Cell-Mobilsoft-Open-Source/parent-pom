@@ -32,7 +32,7 @@ jobs:
         java-version: 17
         distribution: 'temurin'
         server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file 
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
       run: mvn -B  package --file pom.xml
@@ -40,6 +40,6 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: mvn -B -Pparent-pom-release deploy -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
       env:
-        GITHUB_TOKEN: '${{ secrets.ROMBOW_GITHUB_COFFEE_PRIVATE }}'
+        GITHUB_TOKEN: '${{ secrets.GH_TOKEN_TECHUSER_JAVA }}'
         OSSRH_USERNAME: '${{ secrets.OSS_SONATYPE_ORG_USER }}'
         OSSRH_PASSWORD: '${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}'
