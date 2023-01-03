@@ -13,6 +13,14 @@ ezzel optimalizálva a CI/CD belső folyamatainkat.
 ==== Átállás
 A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.
 
+=== github workflow
+
+Complie job matrix configurációt kapott, amiben az operációs rendszer és a 11 valamint a 17-es java verzió van minden lehetséges variációban megadva a buildelési folyamatnak.
+
+Dokumentum generálásnál a java verzió 17-re lett emelve így az asciidoctor-maven-plugin verziója 2.2.2 verzióra lett emelve.
+
+Manual release indításához czenczl felhasználó is bekerült.
+
 ==== Átállás
 
 A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.
