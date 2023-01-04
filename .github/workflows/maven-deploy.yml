@@ -51,7 +51,7 @@ jobs:
       run: mvn -B  package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn -B -Pparent-pom-release deploy -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
+      run: mvn -B -Pparent-pom-release deploy -DskipStaging=true -Dgpg.skip=true -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
       env:
         GITHUB_TOKEN: '${{ secrets.GH_TOKEN_TECHUSER_JAVA }}'
         OSSRH_USERNAME: '${{ secrets.OSS_SONATYPE_ORG_USER }}'
