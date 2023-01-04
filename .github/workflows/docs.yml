@@ -36,8 +36,8 @@ jobs:
       - name: Commit and push to [gh-pages]
         shell: bash
         run: |
-          git config --global user.email "opensource@innovitech.hu"
-          git config --global user.name "Github Action - Deploy documentation"
+          git config --global user.email "opensource@icellmobilsoft.hu"
+          git config --global user.name "icellmobilsoft-robot"
           git add .
           git commit -m "Add auto-generated documentation"
           git push origin gh-pages --force
