@@ -4,10 +4,14 @@
 :doctype: book
 
 = Parent Pom
+
 Java projektek fő pom.xml őse.
 
-A projekt arra célra készült hogy cégben a projektek azonos általános beállításokkal működjenek.
-Összegyűjti a közös beállításokat és azonosítókat, így elkerülhető a fejlesztői beállítások összeakadása (pl. projektek átülésénél) és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
+Általános maven fő pom.xml, amit minden i-Cell Mobilsoft Zrt. projekt tartalmaz.
+
+A projekt arra célra készült hogy i-Cell Mobilsoft álltal készített projektek azonos általános beállításokkal működjenek.
+
+Összegyűjti a közös beállításokat és azonosítókat, így elkerülhető a fejlesztői beállítások összeakadása és kisebb lehet a projekt fő pom.xml mérete ahol csak általános beállítások vannak.
 Emellett segít frissen tartani a plugineket, bugok eséten közös workaround megoldásokat és céges azonosításokat.
 
 .Minimum feltételek
