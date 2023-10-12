@@ -15,7 +15,7 @@ A változtatások nem eredményeznek átállási munkálatokat, visszafelé komp
 
 === parent-pom
 
-.Plugin firssítések:
+.Plugin frissítések:
 * maven-gpg-plugin 1.6 -> https://issues.apache.org/jira/browse/MGPG-81?jql=project%20%3D%20MGPG%20AND%20fixVersion%20in%20(%223.0.0%20(cancelled)%22%2C%203.0.1)%20ORDER%20BY%20created%20DESC[3.0.1]
 * maven-antrun-plugin 1.8 -> https://blogs.apache.org/maven/entry/apache-maven-antrun-plugin-version[3.0.0] 
 * maven-assembly-plugin 3.1.1 -> https://blogs.apache.org/maven/entry/apache-maven-assembly-plugin-version1[3.3.0]
