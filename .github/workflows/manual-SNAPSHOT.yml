@@ -1,0 +1,80 @@
+name: manual-SNAPSHOT
+
+env:
+  GPG_KEY_ID_GITHUB_TECHUSER: '${{ secrets.GPG_KEY_ID_GITHUB_TECHUSER }}'
+  TECH_USER_USERNAME: ${{ vars.TECH_USER_USERNAME }}
+  TECH_USER_EMAIL: ${{ vars.TECH_USER_EMAIL }}
+  PROJECT_NAME: ${GITHUB_REPOSITORY#*/}
+
+on:
+  workflow_dispatch:
+    inputs:
+      comment:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Comment for snapshot'
+        # Default value if no value is explicitly provided
+        default: 'Start SNAPSHOT from WEB UI'
+        # Input has to be provided for the workflow to run
+        required: true
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  manual-SNAPSHOT:
+    name: Manual snapshot release
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+###############
+# pre release
+###############
+      - name: Import GPG key
+        # GPG privat kulcs, ami armor-al exportalva (kezdete: '-----BEGIN PGP PRIVATE KEY BLOCK-----') ez az egesz tartalom base64 elkodolva, az betoltve a secrets tartalomnak
+        # dekodoljuk a base64 elkodolt privat kulcsot es betoltjuk
+        run: |
+          mkdir -p ~/.gnupg/
+          echo "${{ secrets.GPG_SIGNING_KEY_GITHUB_TECHUSER }}" | base64 --decode > ~/.gnupg/private.key
+          gpg --import ~/.gnupg/private.key
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          # A tartalma egy PEM formatumos (kezdete: '-----BEGIN RSA PRIVATE KEY-----') SSH kulcs
+          key: ${{ secrets.SSH_PRIVATE_KEY_GITHUB_TECHUSER }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.KNOWN_HOSTS }} # jelenleg ures a tartalma
+          # config: ${{ secrets.CONFIG }} # ssh_config; optional
+
+      - name: Configure GIT for signed commit
+        run: |
+          git config --global user.name "${{ env.TECH_USER_USERNAME }}"
+          git config --global user.email "${{ env.TECH_USER_EMAIL }}"
+          git config --global user.signingkey "${{ env.GPG_KEY_ID_GITHUB_TECHUSER }}"
+          git config --global commit.gpgsign true
+          git config --global tag.gpgSign true
+      - name: Checkout main
+        uses: actions/checkout@v3
+
+###############
+## release
+###############
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
+          server-username: ${{ secrets.OSS_SONATYPE_ORG_USER }}
+          server-password: ${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+      - name: Build with Maven
+        run: mvn -B  package --file pom.xml
+
+      - name: Publish to GitHub Packages Apache Maven
+        run: mvn -B -Pparent-pom-release deploy -DskipStaging=true -Dgpg.skip=true -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
+        env:
+          GITHUB_TOKEN: '${{ secrets.GH_TOKEN_TECHUSER_JAVA }}'
+          OSSRH_USERNAME: '${{ secrets.OSS_SONATYPE_ORG_USER }}'
+          OSSRH_PASSWORD: '${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}'
