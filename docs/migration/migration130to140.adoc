@@ -8,6 +8,9 @@ Bekerült a Java 21 támogatása a profilokhoz.
 
 === parent-pom
 
+.Új plugin:
+* jacoco-maven-plugin 0.8.11 - általános beállításokkal a surefire és failsafe tesztekhez
+
 .Plugin frissítések:
 * Bump maven-antrun-plugin 3.0.0 -> 3.1.0
 * Bump maven-assembly-plugin 3.3.0 -> 3.6.0
