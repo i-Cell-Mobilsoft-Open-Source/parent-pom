@@ -9,6 +9,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+
+		<jacoco.ut.execution.data.file>${project.build.directory}/jacoco-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+		<jacoco.it.execution.data.file>${project.build.directory}/jacoco-reports/jacoco-it.exec</jacoco.it.execution.data.file>
+		<surefire.reportsDirectory>${project.build.directory}/surefire-reports</surefire.reportsDirectory>
+		<failsafe.reportsDirectory>${project.build.directory}/failsafe-reports</failsafe.reportsDirectory>
 	</properties>
 
 	<inceptionYear>2019</inceptionYear>
@@ -106,6 +111,10 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>3.1.2</version>
+					<configuration>
+						<reportsDirectory>${surefire.reportsDirectory}</reportsDirectory>
+						<argLine>${surefireArgLine}</argLine>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -113,6 +122,8 @@
 					<version>3.1.2</version>
 					<configuration>
 						<encoding>${project.build.sourceEncoding}</encoding>
+						<reportsDirectory>${failsafe.reportsDirectory}</reportsDirectory>
+						<argLine>${failsafeArgLine}</argLine>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -266,6 +277,58 @@
 							<version>2.2.13</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.11</version>
+					<executions>
+						<execution>
+							<id>pre-unit-test</id>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<destFile>${jacoco.ut.execution.data.file}</destFile>
+								<propertyName>surefireArgLine</propertyName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>post-unit-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+							<configuration>
+								<dataFile>${jacoco.ut.execution.data.file}</dataFile>
+								<outputDirectory>
+									${project.reporting.outputDirectory}/jacoco-ut</outputDirectory>
+							</configuration>
+						</execution>
+						<execution>
+							<id>pre-integration-test</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<destFile>${jacoco.it.execution.data.file}</destFile>
+								<propertyName>failsafeArgLine</propertyName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>post-integration-test</id>
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+							<configuration>
+								<dataFile>${jacoco.it.execution.data.file}</dataFile>
+								<outputDirectory>
+									${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
