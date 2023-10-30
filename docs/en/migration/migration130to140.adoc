@@ -1,0 +1,51 @@
+= v1.3.0 → v1.4.0
+
+parent-pom v1.3.0 -> v1.4.0 Migration Description, New Features, and Changes Description
+
+== New Features
+
+Java 21 support has been added to the profiles.
+
+=== parent-pom
+
+.New plugin:
+* jacoco-maven-plugin 0.8.11 - General settings for Surefire and Failsafe tests with default configurations.
+
+
+.Plugin updates:
+* Bump maven-antrun-plugin 3.0.0 -> 3.1.0
+* Bump maven-assembly-plugin 3.3.0 -> 3.6.0
+* Bump maven-dependency-plugin 3.2.0 -> 3.6.0
+* Bump maven-release-plugin 3.0.0-M4 -> 3.0.1
+* Bump maven-compiler-plugin 3.8.1 -> 3.11.0
+* Bump maven-clean-plugin 3.1.0 -> 3.3.1
+* Bump maven-install-plugin 3.0.0-M1 -> 3.1.1
+* Bump maven-resources-plugin 3.2.0 -> 3.3.1
+* Bump maven-surefire-plugin 3.0.0-M5 -> 3.1.2
+* Bump maven-failsafe-plugin 3.0.0-M5 -> 3.1.2
+* Bump maven-deploy-plugin 3.0.0-M1 -> 3.1.1
+* Bump buildnumber-maven-plugin 1.4 -> 3.2.0
+* Bump maven-jar-plugin 3.2.0 -> 3.3.0
+* Bump maven-war-plugin 3.3.2 -> 3.4.0
+* Bump maven-site-plugin 3.9.1 -> 3.12.1
+* Bump maven-javadoc-plugin 3.3.1 -> 3.6.0
+* Bump maven-source-plugin 3.2.1 -> 3.3.0
+* Bump build-helper-maven-plugin 3.2.0 -> 3.4.0
+* Bump maven-enforcer-plugin 3.0.0 -> 3.4.1
+** configuration *requireMavenVersion 3.3.0 -> 3.8.1*
+* Bump asciidoctor-maven-plugin 2.2.1 -> 2.2.4
+* Bump asciidoctorj-diagram 2.2.1 -> 2.2.13
+* Bump maven-gpg-plugin 3.0.1 -> 3.1.0
+* Bump nexus-staging-maven-plugin 1.6.8 -> 1.6.13
+
+
+==== Migration
+The plugins require a minimum of Java 8.
+Their minimum Maven dependency was 3.5.4, which has been raised to version 3.8.1.
+This update is prepared for an easy transition for version 4 and above and significantly optimized for parallel execution.
+
+Therefore, a minimum of Java 8 and Maven 3.8.1+ is required for the project.
+
+==== Migration
+
+The changes do not require any migration efforts and are backward compatible.

@@ -1,0 +1,79 @@
+= POM structure
+
+The project contains several pom.xml files, which always take a more targeted approach to the settings.
+
+== parent-pom
+This is the top pom.xml file. All other pom.xml files start from it.
+
+.pom.xml
+[source,xml]
+----
+<groupId>hu.icellmobilsoft.pom</groupId>
+<artifactId>parent-pom</artifactId>
+----
+
+Its content consists only of completely generic elements, icellmobilsoft company-specific settings:
+
+.Settings:
+* UTF-8 character encoding
+* date format
+* organisation
+* developers
+
+.Definitions:
+* maven plugin:
+** versions
+** workarounds
+** general settings
+* maven version minimum requirement
+
+.Profiles:
+* jdk8 - activated when compiling the project with JDK 8 environment
+* jdk11 - activated when compiling the project with JDK 11 environment
+* jdk17 - activated when compiling the project with JDK 17 environment
+* parent-pom-release - must be activated manually when creating a new release from 'parent-pom'
+
+== parent-icellmobilsoft-pom
+
+This is a 'child' pom that inherits all the settings of the parent pom, and completes with icellmobilsoft domain specific settings.
+
+.icellmobilsoft/pom.xml
+[source,xml]
+----
+<groupId>hu.icellmobilsoft.pom</groupId>
+<artifactId>parent-icellmobilsoft-pom</artifactId>
+----
+
+Its content is minimal, it just completes the main pom.xml:
+
+.Settings:
+* Repository (plugin repository is):
+** icellmobilsoft nexus
+** jboss maven
+** maven central
+* Distribution Management
+** Snapshot storage
+** Release storage
+
+== parent-oss-pom
+
+This is a 'child' pom, which inherits all the settings of the parent pom, and completes with icellmobilsoft open source specific settings.
+
+.oss/pom.xml
+[source,xml]
+----
+<groupId>hu.icellmobilsoft.pom</groupId>
+<artifactId>parent-oss-pom</artifactId>
+----
+
+Its content targets the settings needed to publish the current public maven central.
+These include:
+
+.Settings:
+
+* licence
+* pluginManagement
+* release profile
+* distributionManagement
+* gpg signature
+* sonatype public nexus plugin handling
