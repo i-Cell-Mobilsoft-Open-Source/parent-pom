@@ -2,47 +2,47 @@
 
 = parent-pom
 
-image:https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom/actions/workflows/compile.yml/badge.svg?style=plastic&branch=master[GitHub Compile workflow status in master branch]
-image:https://img.shields.io/maven-central/v/hu.icellmobilsoft.pom/parent-pom?logo=apache-maven&style=for-the-badge)[Maven central version of Parent pom project]
-image:https://img.shields.io/github/license/i-Cell-Mobilsoft-Open-Source/parent-pom?style=plastic&logo=apache[License of Parent pom project]
-image:https://img.shields.io/badge/JVM-11,17,21-brightgreen.svg?style=plastic&logo=openjdk[Supported JVM Versions]
+image:https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom/actions/workflows/compile.yml/badge.svg?style=plastic
+image:https://img.shields.io/maven-central/v/hu.icellmobilsoft.pom/parent-pom?logo=apache-maven
+image:https://img.shields.io/github/license/i-Cell-Mobilsoft-Open-Source/parent-pom?style=plastic
+image:https://img.shields.io/badge/JVM-8,11,17-brightgreen.svg?style=plastic
 
-Általános maven fő pom.xml, amit minden i-Cell Mobilsoft Zrt. projekt tartalmaz.
-A célja hogy egy helyen összpontosítja az általános maven és plugin beállításokat.
+General maven main pom.xml, which is included in all i-Cell Mobilsoft Zrt. projects.
+Its purpose is to centralize the general maven and plugin settings in one place.
 
 == Maven central
-A projekt buildelve van a official maven repository-ba is,
-így a projektek automatán lehúzzák:
+The project is also buildelve in the official maven repository,
+so projects are automatically pulled down:
 
-.Általános beállítások
+.General settings
 [source, xml]
 ----
-    <dependency>
-        <groupId>hu.icellmobilsoft.pom</groupId>
-        <artifactId>parent-pom</artifactId>
-        <version>${version}</version>
-    </dependency>
+<dependency>
+<groupId>hu.icellmobilsoft.pom</groupId>
+<artifactId>parent-pom</artifactId>
+<version>${version}</version>
+</dependency>
 ----
 
-.icellmobilsoft nexus beállítások
+.icellmobilsoft nexus settings
 [source, xml]
 ----
-    <dependency>
-        <groupId>hu.icellmobilsoft.pom</groupId>
-        <artifactId>parent-icellmobilsoft-pom</artifactId>
-        <version>${version}</version>
-    </dependency>
+<dependency>
+<groupId>hu.icellmobilsoft.pom</groupId>
+<artifactId>parent-icellmobilsoft-pom</artifactId>
+<version>${version}</version>
+</dependency>
 ----
 
-.icellmobilsoft open-source projektek beállítása
+Setting up .icellmobilsoft open-source projects
 [source, xml]
 ----
-    <dependency>
-        <groupId>hu.icellmobilsoft.pom</groupId>
-        <artifactId>parent-oss-pom</artifactId>
-        <version>${version}</version>
-    </dependency>
+<dependency>
+<groupId>hu.icellmobilsoft.pom</groupId>
+<artifactId>parent-oss-pom</artifactId>
+<version>${version}</version>
+</dependency>
 ----
 
-== Leírás
-Bővebb leírás a https://i-cell-mobilsoft-open-source.github.io/parent-pom/ oldalon található.
+== Description
+For more information, see https://i-cell-mobilsoft-open-source.github.io/parent-pom/.
