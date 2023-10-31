@@ -2,47 +2,47 @@
 
 = parent-pom
 
-image:https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom/actions/workflows/compile.yml/badge.svg?style=plastic
-image:https://img.shields.io/maven-central/v/hu.icellmobilsoft.pom/parent-pom?logo=apache-maven
-image:https://img.shields.io/github/license/i-Cell-Mobilsoft-Open-Source/parent-pom?style=plastic
-image:https://img.shields.io/badge/JVM-8,11,17-brightgreen.svg?style=plastic
+image:https://github.com/i-Cell-Mobilsoft-Open-Source/parent-pom/actions/workflows/compile.yml/badge.svg?style=plastic&branch=master[GitHub Compile workflow status in master branch]
+image:https://img.shields.io/maven-central/v/hu.icellmobilsoft.pom/parent-pom?logo=apache-maven&style=for-the-badge)[Maven central version of Parent pom project]
+image:https://img.shields.io/github/license/i-Cell-Mobilsoft-Open-Source/parent-pom?style=plastic&logo=apache[License of Parent pom project]
+image:https://img.shields.io/badge/JVM-11,17,21-brightgreen.svg?style=plastic&logo=openjdk[Supported JVM Versions]
 
-General maven main pom.xml, which is included in all i-Cell Mobilsoft Zrt. projects.
-Its purpose is to centralize the general maven and plugin settings in one place.
+General Maven main pom.xml included in every i-Cell Mobilsoft Zrt. project.
+Its purpose is to centralize general Maven and plugin configurations in one place.
 
 == Maven central
-The project is also buildelve in the official maven repository,
-so projects are automatically pulled down:
+The project is also built in the official Maven repository, 
+so projects automatically pull it:
 
 .General settings
 [source, xml]
 ----
-<dependency>
-<groupId>hu.icellmobilsoft.pom</groupId>
-<artifactId>parent-pom</artifactId>
-<version>${version}</version>
-</dependency>
+    <dependency>
+        <groupId>hu.icellmobilsoft.pom</groupId>
+        <artifactId>parent-pom</artifactId>
+        <version>${version}</version>
+    </dependency>
 ----
 
 .icellmobilsoft nexus settings
 [source, xml]
 ----
-<dependency>
-<groupId>hu.icellmobilsoft.pom</groupId>
-<artifactId>parent-icellmobilsoft-pom</artifactId>
-<version>${version}</version>
-</dependency>
+    <dependency>
+        <groupId>hu.icellmobilsoft.pom</groupId>
+        <artifactId>parent-icellmobilsoft-pom</artifactId>
+        <version>${version}</version>
+    </dependency>
 ----
 
-Setting up .icellmobilsoft open-source projects
+.icellmobilsoft setting up open-source projects
 [source, xml]
 ----
-<dependency>
-<groupId>hu.icellmobilsoft.pom</groupId>
-<artifactId>parent-oss-pom</artifactId>
-<version>${version}</version>
-</dependency>
+    <dependency>
+        <groupId>hu.icellmobilsoft.pom</groupId>
+        <artifactId>parent-oss-pom</artifactId>
+        <version>${version}</version>
+    </dependency>
 ----
 
 == Description
-For more information, see https://i-cell-mobilsoft-open-source.github.io/parent-pom/.
+For more detailed information, please refer to https://i-cell-mobilsoft-open-source.github.io/parent-pom/.
