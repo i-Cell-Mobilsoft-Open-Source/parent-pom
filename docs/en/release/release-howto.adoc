@@ -1,0 +1,111 @@
+= Release process
+Since the project serves as a legacy for other projects, it should be given a non-"classic" release maven configuration.
+The reason is that this would cause the target project to inherit the project settings, and that would lead to very unwanted events.
+So all release settings should be hidden under a *parent-pom-release* `maven profile`.
+
+== Deploy
+If you want to release a SNAPSHOT version to the company nexus server, you must use the following commands:
+
+[source,bash]
+----
+mvn -B -Pparent-pom-release clean deploy source:jar
+----
+* _mvn_ maven executable command
+* _-B_ batch run - don't ask for console confirmations from maven
+* _-Pparent-pom-release_ activates the 'parent-pom-release' maven profile
+* _clean_ deletes `*/target` folders
+* _deploy_ deploy command, which briefly does the following in main steps:
+** compiles the code
+** creates jar, war, pom packages
+** copies the completed jar, war, pom packages to the local `.m2` repository
+** uploads the completed jar, war, pom packages to the defined `snapshotRepository`, which is the company nexus
+* _source:jar_ this is a switch to copy/play the source code to the nexus together with the created jar, war, pom packages
+
+== Release
+If we want to release a fixed version without SNAPSHOT markup.
+The clean release process itself consists of 4 steps:
+
+=== #1 Check
+This step is used to verify from a technical point of view that all the settings and release requirements for maven are met.
+In short, the following happens:
+* all changes are committed
+* the code can be translated 
+* tests can be run successfully
+* SCM settings are in place
+* the versioning attempt is successful
+
+[source,bash]
+----
+mvn -B -Pparent-pom-release release:prepare -DdryRun=true
+----
+* _mvn_ maven executable command
+* _-B_ batch run - don't ask for console confirmations from maven
+* _-Pparent-pom-release_ activates the 'parent-pom-release' maven profile
+* _release:prepare_ part of maven-release-plugin, starts the release of the SCM side version
+* *_-DdryRun=true_* option to make the version release only "virtual", so that it is only run for verification purposes
+
+This step should run without any error messages. Any errors must be corrected, because the actual version release will not run.
+
+=== #2 Cleaning
+The temp files created during the test are deleted so they don't interfere with the real version release.
+
+[source,bash]
+----
+mvn -B release:clean
+----
+* _mvn_ maven executable command
+* _-B_ batch run - don't ask for console confirmations from maven
+* _release:clean_ part of maven-release-plugin, cleans `target` directory and deletes temporary release files
+
+=== #3 SCM version change
+If steps #1 and #2 are successful, we will launch a real SCM version
+
+[source,bash]
+----
+mvn -B -Pparent-pom-release release:prepare
+----
+* _mvn_ maven executable command
+* _-B_ batch run - don't ask for console confirmations from maven
+* _-Pparent-pom-release_ activates the 'parent-pom-release' maven profile
+* _release:prepare_ part of maven-release-plugin, starts the release of the SCM side version
+
+This step often fails on the first run (in a new environment) and these are the main reasons why:
+* environment settings are not prepared to run console maven, git and java
+* the local `settings.xml` file does not have the authentication details of the servers in pom.xml expanded
+* the java version does not include server certificates (this is usually the biggest pain in the ass)
+
+The command briefly does the following:
+
+* checks described in point #1
+* cut "-SNAPSHOT" from the version number
+* compile
+* upload local `.m2` directory
+* commit
+* create tag
+* version number increment + "-SNAPSHOT" addition
+* compile
+* commit
+
+After running the command, the version number in the local files will be incremented and committed.
+The files include *release temporary files, which should not be deleted!*
+
+=== #4 Nexus upload
+Once we have completed point #3, all that remains is to make the packages.
+It is important that the temporal files for point #3 are in the project!
+
+----
+mvn -B -Pparent-pom-release release:perform
+----
+* _mvn_ maven executable command
+* _-B_ batch run - don't ask for console confirmations from maven
+* _-Pparent-pom-release_ activates the 'parent-pom-release' maven profile
+* _release:perform_ is part of maven-release-plugin, starts the release of the nexus-side version:
+** removes source code marked with SCM TAG in temporal files
+** create compile, jar, war, pom, source packages
+** uploads to nexus
+
+The most common error is that the SSL certificate on the nexus server is not included in our java version, so it runs to error.
+
+== Release problems
+Unfortunately, the above 4 steps will not always be successful, and often corrections have to be made.
+The most common cases and their repair steps are explained in the following sections.

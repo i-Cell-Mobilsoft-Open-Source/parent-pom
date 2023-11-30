@@ -7,14 +7,14 @@ image:https://img.shields.io/maven-central/v/hu.icellmobilsoft.pom/parent-pom?lo
 image:https://img.shields.io/github/license/i-Cell-Mobilsoft-Open-Source/parent-pom?style=plastic&logo=apache[License of Parent pom project]
 image:https://img.shields.io/badge/JVM-11,17,21-brightgreen.svg?style=plastic&logo=openjdk[Supported JVM Versions]
 
-Általános maven fő pom.xml, amit minden i-Cell Mobilsoft Zrt. projekt tartalmaz.
-A célja hogy egy helyen összpontosítja az általános maven és plugin beállításokat.
+General Maven main pom.xml included in every i-Cell Mobilsoft Zrt. project.
+Its purpose is to centralize general Maven and plugin configurations in one place.
 
 == Maven central
-A projekt buildelve van a official maven repository-ba is,
-így a projektek automatán lehúzzák:
+The project is also built in the official Maven repository, 
+so projects automatically pull it:
 
-.Általános beállítások
+.General settings
 [source, xml]
 ----
     <dependency>
@@ -24,7 +24,7 @@ A projekt buildelve van a official maven repository-ba is,
     </dependency>
 ----
 
-.icellmobilsoft nexus beállítások
+.icellmobilsoft nexus settings
 [source, xml]
 ----
     <dependency>
@@ -34,7 +34,7 @@ A projekt buildelve van a official maven repository-ba is,
     </dependency>
 ----
 
-.icellmobilsoft open-source projektek beállítása
+.icellmobilsoft setting up open-source projects
 [source, xml]
 ----
     <dependency>
@@ -44,5 +44,5 @@ A projekt buildelve van a official maven repository-ba is,
     </dependency>
 ----
 
-== Leírás
-Bővebb leírás a https://i-cell-mobilsoft-open-source.github.io/parent-pom/ oldalon található.
+== Description
+For more detailed information, please refer to https://i-cell-mobilsoft-open-source.github.io/parent-pom/.

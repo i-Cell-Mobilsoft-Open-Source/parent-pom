@@ -1,0 +1,43 @@
+= v1.1.0 → v1.2.0
+
+parent-pom v1.1.0 -> v1.2.0 migration description, news, changes
+
+== What's new
+
+=== parent-icellmobilsoft-pom
+
+Replaced the order of the repository,
+to put `icell-public-repository` in the first place,
+thereby optimising our internal CI/CD processes.
+
+==== Switchover
+The changes will not result in any migration work, it is backwards compatible.
+
+=== parent-pom
+
+.Plugin updates:
+* maven-gpg-plugin 1.6 -> https://issues.apache.org/jira/browse/MGPG-81?jql=project = MGPG AND fixVersion in ("3.0.0 (cancelled)", 3.0.1) ORDER BY created DESC[3.0.1]
+* maven-antrun-plugin 1.8 -> https://blogs.apache.org/maven/entry/apache-maven-antrun-plugin-version[3.0.0]
+* maven-assembly-plugin 3.1.1 -> https://blogs.apache.org/maven/entry/apache-maven-assembly-plugin-version1[3.3.0]
+* maven-dependency-plugin 3.1.1 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12348705
+* maven-release-plugin 2.5.3 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12348079
+* maven-resources-plugin 3.1.0 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12343158
+* maven-surefire-plugin 3.0.0-M3 -> https://blog.soebes.de/blog/2020/06/19/apache-maven-surefire-version-3-dot-0-0-m5-release/[3.0.0-M5]
+* maven-failsafe-plugin 3.0.0-M3 -> https://maven.apache.org/surefire/maven-failsafe-plugin/index.html[3.0.0-M5]
+* maven-jar-plugin 3.1.1 -> https://blogs.apache.org/maven/entry/apache-maven-jar-plugin-version3[3.2.0]
+* maven-war-plugin 3.2.2 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12348574
+* maven-site-plugin 3.7.1 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12317923
+* maven-javadoc-plugin 3.1.0 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12347807
+* maven-source-plugin 3.0.1 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12317924
+* build-helper-maven-plugin 3.0.0 -> https://www.mail-archive.com/users@maven.apache.org/msg142335.html[3.2.0]
+* maven-enforcer-plugin 3.0.0-M2 -> https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12346527
+* asciidoctor-maven-plugin 1.6.0 -> https://github.com/asciidoctor/asciidoctor-maven-plugin/releases[2.2.1]
+https://gist.github.com/abelsromero/263ae7703f4bc5efebbfd16d9e407c28[Here] you can find 1.6.0 -> v2 migration migration instructions
+* asciidoctorj-diagram 2.0.1 -> https://github.com/asciidoctor/asciidoctor-diagram/blob/master/CHANGELOG.adoc[2.2.1]
+
+==== Switchover
+Most of the plugins are java 7 and 8 minimum requirement,
+so at least Java8 is required for the project.
+
+Generally, no problems are expected, possibly when using the asciidoc plugin,
+but it is likely non-critical.

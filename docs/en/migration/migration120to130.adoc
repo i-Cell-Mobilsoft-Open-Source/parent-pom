@@ -1,0 +1,26 @@
+= v1.2.0 → v1.3.0
+
+parent-pom v1.2.0 -> v1.3.0 migration description, new features, changes
+
+== What's new
+
+=== parent-icellmobilsoft-pom
+
+Replaced the order of the plugin repository,
+to put `icell-public-repository` in the first place,
+thereby optimising our internal CI/CD processes.
+
+==== Switchover
+The changes will not result in any migration work, it is backwards compatible.
+
+=== github workflow
+
+Complie has been given a job matrix configuration with the operating system and java versions 11 and 17 in all possible variations for the build process.
+
+For document generation, java version has been upgraded to version 17, so the asciidoctor-maven-plugin version has been upgraded to 2.2.2.
+
+Manual release to start user czenczl has been added.
+
+==== Switchover
+
+The changes will not result in any migration work, it is backwards compatible.
