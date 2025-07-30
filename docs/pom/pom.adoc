@@ -28,9 +28,10 @@ Tartalma csak teljesen általános elemekből áll, icellmobilsoft cégre utaló
 * maven verzió minimum követelmény
 
 .Profilok:
-* jdk8 - aktiválódik hogyha JDK 8 -es környezettel kompiláljuk a projektet
+* jdk8 - aktiválódik hogyha JDK 8 -as környezettel kompiláljuk a projektet
 * jdk11 - aktiválódik hogyha JDK 11 -es környezettel kompiláljuk a projektet
 * jdk17 - aktiválódik hogyha JDK 17 -es környezettel kompiláljuk a projektet
+* jdk21 - aktiválódik hogyha JDK 21 -es környezettel kompiláljuk a projektet
 * parent-pom-release - kézzel kell aktiválni hogyha a 'parent-pom'-ból új release-t készítünk
 
 == parent-icellmobilsoft-pom

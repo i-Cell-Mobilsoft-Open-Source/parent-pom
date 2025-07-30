@@ -1,4 +1,5 @@
 = Releaselési folyamat
+
 Mivel a projekt ősként szolgál a többi projekten, így azt figyelembe véve nem "klasszikus" release maven beállításokkal kell ellátni.
 Az ok hogy ennek a projekt beállításait leörökölné a cél projekt, és az nagyon nem kívánt eseményekhez vezetne.
 Tehát minden release beállítást egy *parent-pom-release* `maven profile` alá kell rejteni.
@@ -28,6 +29,7 @@ Maga a tiszta release folyamat 4 lépésből áll:
 === #1 Ellenőrzés
 Ez a lépés szolgál arra, hogy technikai oldalról ellenőrizzük le, hogy a maven minden beállítása és release követelménye megvan.
 Röviden a következő történik:
+
 * minden változás commitolva van
 * fordítható a kód
 * tesztek sikeresen le tudnak futni
@@ -70,6 +72,7 @@ mvn -B -Pparent-pom-release release:prepare
 * _release:prepare_ maven-release-plugin része, indítja az SCM oldali verzió kiadását
 
 Ez a lépés gyakran hibára fut első futásnál (új környezetben), melynek a legfőbb okai ezek szoktak lenni:
+
 * környezeti beállítások nincsenek felkészítve konzolos maven, git és java futásra
 * lokális `settings.xml` fájlban nincsenek rözgítve a pom.xml-ben szereplő szerverek authentikációs adatai
 * a java verzióban nincsenek benne a szerverek tanusítványai (ez szok lenni a legnyagyobb szívás)

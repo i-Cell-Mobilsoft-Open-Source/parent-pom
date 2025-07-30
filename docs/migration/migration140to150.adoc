@@ -1,0 +1,18 @@
+= v1.4.0 → v1.5.0
+
+parent-pom v1.4.0 -> v1.5.0 migrációs leírás, újdonságok, változások leírása
+
+== Újdonságok
+
+=== parent-pom
+
+.Plugin csere:
+* org.sonatype.plugins:nexus-staging-maven-plugin 1.6.13 -> org.sonatype.central:central-publishing-maven-plugin 0.8.0
+
+==== Átállás
+
+* Open Source Maven projektek a https://github.com/i-Cell-Mobilsoft-Open-Source alatt, akik a `parent-oss-pom`-ot használják frissíteniük kell Sonatype bejelentkezési adataikat
+és szerver azonosítóikat a GitHub workflow-kban és a settings.xml fájlban a következőképpen:
+** server-id: ossrh -> central
+** secrets.OSS_SONATYPE_ORG_USER -> secrets.CENTRAL_SONATYPE_ORG_USER
+** secrets.OSS_SONATYPE_ORG_PASSWORD -> secrets.CENTRAL_SONATYPE_ORG_PASSWORD
