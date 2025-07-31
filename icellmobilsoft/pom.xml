@@ -87,7 +87,6 @@
 
 	<distributionManagement>
 		<repository>
-			<uniqueVersion>false</uniqueVersion>
 			<id>icell-releases</id>
 			<name>i-Cell Releases</name>
 			<url>https://nexus.icellmobilsoft.hu/repository/releases/</url>
@@ -95,7 +94,6 @@
 		</repository>
 
 		<snapshotRepository>
-			<uniqueVersion>true</uniqueVersion>
 			<id>icell-snapshots</id>
 			<name>i-Cell Snapshots</name>
 			<url>https://nexus.icellmobilsoft.hu/repository/snapshots</url>

@@ -13,6 +13,14 @@ parent-pom v1.4.0 -> v1.5.0 migrációs leírás, újdonságok, változások le�
 
 * Átállás custom workflow-ról a központosított `speter555/gh-action-mvn-release-main@v0.32.0` action-re
 
+== Bugfix-ek
+
+=== maven-deploy-plugin konfiguráció
+
+* Jelenleg a maven-deploy-plugin 3.1.1-es verzióját használjuk. A 3.0.0-ás verzió óta a `uniqueVersion` konfigurációs
+pareméter teljesen megszűntetésre került, így mi is eltávolítottuk a konfigurációnkból. A Maven mindig egyedi verziót használ a snapshot-okhoz (timestamp-pel ellátott snapshot artifact-okat).
+(https://maven.apache.org/plugins-archives/maven-deploy-plugin-3.0.0/#major-version-upgrade-to-version-3-0-0)
+
 ==== Átállás
 
 * Open Source Maven projektek a https://github.com/i-Cell-Mobilsoft-Open-Source alatt, akik a `parent-oss-pom`-ot használják frissíteniük kell Sonatype bejelentkezési adataikat
