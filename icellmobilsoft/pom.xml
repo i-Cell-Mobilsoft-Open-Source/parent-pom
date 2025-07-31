@@ -102,21 +102,4 @@
 			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>
-
-	<profiles>
-		<profile>
-			<id>parent-pom-release</id>
-
-			<distributionManagement>
-				<snapshotRepository>
-					<id>central</id>
-					<url>https://central.sonatype.com/repository/maven-snapshots/</url>
-				</snapshotRepository>
-				<repository>
-					<id>central</id>
-					<url>https://repo.maven.apache.org/maven2</url>
-				</repository>
-			</distributionManagement>
-		</profile>
-	</profiles>
 </project>

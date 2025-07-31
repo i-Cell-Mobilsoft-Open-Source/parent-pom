@@ -459,17 +459,6 @@
 				<developerConnection>scm:git:git@github.com:i-Cell-Mobilsoft-Open-Source/parent-pom.git</developerConnection>
 			</properties>
 
-			<distributionManagement>
-				<snapshotRepository>
-					<id>central</id>
-					<url>https://central.sonatype.com/repository/maven-snapshots/</url>
-				</snapshotRepository>
-				<repository>
-					<id>central</id>
-					<url>https://repo.maven.apache.org/maven2</url>
-				</repository>
-			</distributionManagement>
-
 			<build>
 				<plugins>
 					<plugin>
@@ -500,6 +489,7 @@
 						<configuration>
 							<autoPublish>true</autoPublish>
 							<waitUntil>published</waitUntil>
+							<centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
 						</configuration>
 					</plugin>
 				</plugins>
