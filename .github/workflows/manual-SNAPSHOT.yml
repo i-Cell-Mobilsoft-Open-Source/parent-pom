@@ -64,9 +64,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          server-id: ossrh # Value of the distributionManagement/repository/id field of the pom.xml
-          server-username: ${{ secrets.OSS_SONATYPE_ORG_USER }}
-          server-password: ${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}
+          server-id: central # the default server id for Sonatype Central Repository
+          server-username: ${{ secrets.CENTRAL_SONATYPE_ORG_USER }}
+          server-password: ${{ secrets.CENTRAL_SONATYPE_ORG_PASSWORD }}
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
       - name: Build with Maven
@@ -76,5 +76,5 @@ jobs:
         run: mvn -B -Pparent-pom-release deploy -DskipStaging=true -Dgpg.skip=true -s $GITHUB_WORKSPACE/.github/.m2/settings.xml
         env:
           GITHUB_TOKEN: '${{ secrets.GH_TOKEN_TECHUSER_JAVA }}'
-          OSSRH_USERNAME: '${{ secrets.OSS_SONATYPE_ORG_USER }}'
-          OSSRH_PASSWORD: '${{ secrets.OSS_SONATYPE_ORG_PASSWORD }}'
+          CENTRAL_USERNAME: '${{ secrets.CENTRAL_SONATYPE_ORG_USER }}'
+          CENTRAL_PASSWORD: '${{ secrets.CENTRAL_SONATYPE_ORG_PASSWORD }}'

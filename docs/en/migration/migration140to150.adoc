@@ -1,0 +1,18 @@
+= v1.4.0 → v1.5.0
+
+parent-pom v1.4.0 -> v1.5.0 Migration Description, New Features, and Changes Description
+
+== New Features
+
+=== parent-pom
+
+.Plugin change:
+* org.sonatype.plugins:nexus-staging-maven-plugin 1.6.13 -> org.sonatype.central:central-publishing-maven-plugin 0.8.0
+
+==== Migration
+
+* Open Source Maven projects under https://github.com/i-Cell-Mobilsoft-Open-Source using `parent-oss-pom` should update their Sonatype credentials
+and server ids in their GitHub workflows and settings.xml like so:
+** server-id: ossrh -> central
+** secrets.OSS_SONATYPE_ORG_USER -> secrets.CENTRAL_SONATYPE_ORG_USER
+** secrets.OSS_SONATYPE_ORG_PASSWORD -> secrets.CENTRAL_SONATYPE_ORG_PASSWORD

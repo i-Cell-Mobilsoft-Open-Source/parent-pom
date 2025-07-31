@@ -1,4 +1,5 @@
 = Release process
+
 Since the project serves as a legacy for other projects, it should be given a non-"classic" release maven configuration.
 The reason is that this would cause the target project to inherit the project settings, and that would lead to very unwanted events.
 So all release settings should be hidden under a *parent-pom-release* `maven profile`.
@@ -28,6 +29,7 @@ The clean release process itself consists of 4 steps:
 === #1 Check
 This step is used to verify from a technical point of view that all the settings and release requirements for maven are met.
 In short, the following happens:
+
 * all changes are committed
 * the code can be translated 
 * tests can be run successfully
@@ -70,6 +72,7 @@ mvn -B -Pparent-pom-release release:prepare
 * _release:prepare_ part of maven-release-plugin, starts the release of the SCM side version
 
 This step often fails on the first run (in a new environment) and these are the main reasons why:
+
 * environment settings are not prepared to run console maven, git and java
 * the local `settings.xml` file does not have the authentication details of the servers in pom.xml expanded
 * the java version does not include server certificates (this is usually the biggest pain in the ass)
