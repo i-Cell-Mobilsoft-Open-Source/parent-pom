@@ -14,7 +14,7 @@ parent-pom v1.4.0 -> v1.5.0 migrációs leírás, újdonságok, változások le�
 === maven-deploy-plugin konfiguráció
 
 * Jelenleg a maven-deploy-plugin 3.1.1-es verzióját használjuk. A 3.0.0-ás verzió óta a `uniqueVersion` konfigurációs
-pareméter teljesen megszűntetésre került, így mi is eltávolítottuk a konfigurációnkból. A Maven mindig egyedi verziót használ a snapshot-okhoz (timestamp-pel ellátott snapshot artifact-okat).
+pareméter teljesen megszűntetésre került, így mi is eltávolítottuk a konfigurációnkból.
 (https://maven.apache.org/plugins-archives/maven-deploy-plugin-3.0.0/#major-version-upgrade-to-version-3-0-0)
 
 ==== Átállás
