@@ -9,10 +9,6 @@ parent-pom v1.4.0 -> v1.5.0 migrációs leírás, újdonságok, változások le�
 .Plugin csere:
 * org.sonatype.plugins:nexus-staging-maven-plugin 1.6.13 -> org.sonatype.central:central-publishing-maven-plugin 0.8.0
 
-=== GitHub release workflow
-
-* Átállás custom workflow-ról a központosított `speter555/gh-action-mvn-release-main@v0.32.0` action-re
-
 == Bugfix-ek
 
 === maven-deploy-plugin konfiguráció

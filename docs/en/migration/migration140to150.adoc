@@ -9,10 +9,6 @@ parent-pom v1.4.0 -> v1.5.0 Migration Description, New Features, and Changes Des
 .Plugin change:
 * org.sonatype.plugins:nexus-staging-maven-plugin 1.6.13 -> org.sonatype.central:central-publishing-maven-plugin 0.8.0
 
-=== GitHub release workflow
-
-* Change from custom workflow to the centralized `speter555/gh-action-mvn-release-main@v0.32.0` action
-
 == Bugfixes
 
 === maven-deploy-plugin configuration
