@@ -64,7 +64,7 @@ jobs:
 
       - name: Checkout ${{ github.event.ref }}
         uses: actions/checkout@v3
-        #        with:
+          #        with:
         # Ne az a user legyen aki a workflow-ot inditotta
       #          token: ${{ secrets.GH_TOKEN_TECHUSER_JAVA }}
 
