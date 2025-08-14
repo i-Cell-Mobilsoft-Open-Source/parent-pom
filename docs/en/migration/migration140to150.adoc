@@ -9,6 +9,14 @@ parent-pom v1.4.0 -> v1.5.0 Migration Description, New Features, and Changes Des
 .Plugin change:
 * org.sonatype.plugins:nexus-staging-maven-plugin 1.6.13 -> org.sonatype.central:central-publishing-maven-plugin 0.8.0
 
+== Bugfixes
+
+=== maven-deploy-plugin configuration
+
+* Currently, we are using maven-deploy-plugin 3.1.1. Since version 3.0.0 the `uniqueVersion` configuration was completely
+removed, so we have removed it from our configuration as well. Maven always uses unique versions for snapshots (timestamped snapshot artifacts).
+(https://maven.apache.org/plugins-archives/maven-deploy-plugin-3.0.0/#major-version-upgrade-to-version-3-0-0)
+
 ==== Migration
 
 * Open Source Maven projects under https://github.com/i-Cell-Mobilsoft-Open-Source using `parent-oss-pom` should update their Sonatype credentials
