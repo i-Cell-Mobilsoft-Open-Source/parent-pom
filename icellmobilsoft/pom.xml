@@ -9,6 +9,8 @@
 	<artifactId>parent-icellmobilsoft-pom</artifactId>
 	<packaging>pom</packaging>
 
+	<name>icellmobilsoft internal parent pom</name>
+	
 	<repositories>
 		<repository>
 			<releases>

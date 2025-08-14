@@ -9,6 +9,8 @@
 	<artifactId>parent-oss-pom</artifactId>
 	<packaging>pom</packaging>
 
+	<name>icellmobilsoft OSS parent pom</name>
+
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
