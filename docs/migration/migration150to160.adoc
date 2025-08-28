@@ -1,0 +1,14 @@
+= v1.5.0 → v1.6.0
+
+parent-pom v1.5.0 -> v1.6.0 migrációs leírás, újdonságok, változások leírása
+
+== Újdonságok
+
+=== parent-icellmobilsoft-pom
+
+* Új Maven repository hozzáadása `central-snapshots` ID-val, kizárólag snapshot-okhoz engedélyezve.
+* A `central` repository átnevezése `central-releases` névre.
+
+==== Átállás
+
+A változtatások nem eredményeznek átállási munkálatokat, visszafelé kompatibilis.

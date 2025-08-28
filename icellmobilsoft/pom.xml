@@ -43,9 +43,20 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-			<id>central</id>
-			<name>Central Repository</name>
+			<id>central-releases</id>
+			<name>Maven Central Releases Repository</name>
 			<url>https://repo.maven.apache.org/maven2</url>
+		</repository>
+		<repository>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>central-snapshots</id>
+			<name>Maven Central Snapshots Repository</name>
+			<url>https://central.sonatype.com/repository/maven-snapshots/</url>
 		</repository>
 	</repositories>
 
