@@ -1,0 +1,14 @@
+= v1.5.0 → v1.6.0
+
+parent-pom v1.5.0 -> v1.6.0 Migration Description, New Features, and Changes Description
+
+== New Features
+
+=== parent-icellmobilsoft-pom
+
+* Add a new Maven repository with ID `central-snapshots`, configured to allow only snapshots.
+* Renamed `central` repository 'central-releases'
+
+==== Migration
+
+The changes do not require any migration efforts and are backward compatible.
