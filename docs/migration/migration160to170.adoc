@@ -11,3 +11,13 @@ parent-pom v1.6.0 -> v1.7.0 migrációs leírás, újdonságok, változások le�
 ==== Átállás
 
 Ahol van checksum ellenőrzés (pl. download scriptek), ott a scriptet `SHA-1` vagy `MD5` ellenőrzésekre kell átállni, mivel ezek továbbra is elérhetőek lesznek a Maven Central-on.
+
+== Változások a v1.7.0-ban
+
+=== parent-oss-pom
+
+* A Maven Central plugin konfigurációja módításra került, hogy a `published` fázis helyett csak `validated` fázisig várjon, ezzel csökkentve a CI-folyamatok timeout kockázatát.
+
+==== Migráció
+
+* Nincs szükség migrációra, de ajánlott ellenőrizni a release állapotát a Maven Central Portalon.
