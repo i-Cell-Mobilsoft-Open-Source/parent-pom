@@ -12,3 +12,12 @@ parent-pom v1.5.0 -> v1.6.0 Migration Description, New Features, and Changes Des
 ==== Migration
 
 The changes do not require any migration efforts and are backward compatible.
+
+== v1.6.0 → v1.6.1
+
+=== parent-oss-pom
+* Due to Maven Central limitations, optional checksums (`SHA-256` and `SHA-512`) will no longer be published.
+
+==== Migration
+
+Where checksum verification is performed (e.g., in download scripts), the script must be switched to `SHA-1` or `MD5` verification, as these will continue to be available on Maven Central.
