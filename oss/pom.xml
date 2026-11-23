@@ -85,6 +85,7 @@
 					<configuration>
 						<autoPublish>true</autoPublish>
 						<waitUntil>published</waitUntil>
+						<checksums>required</checksums>
 					</configuration>
 				</plugin>
 			</plugins>
