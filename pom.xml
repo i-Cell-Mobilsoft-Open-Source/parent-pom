@@ -486,6 +486,7 @@
 						<configuration>
 							<autoPublish>true</autoPublish>
 							<waitUntil>published</waitUntil>
+							<checksums>required</checksums>
 							<centralSnapshotsUrl>https://central.sonatype.com/repository/maven-snapshots/</centralSnapshotsUrl>
 						</configuration>
 					</plugin>

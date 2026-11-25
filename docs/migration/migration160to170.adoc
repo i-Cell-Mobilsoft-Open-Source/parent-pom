@@ -1,0 +1,13 @@
+= v1.6.0 → v1.7.0
+
+parent-pom v1.6.0 -> v1.7.0 migrációs leírás, újdonságok, változások leírása
+
+== v1.6.0 → v1.6.1/v1.7.0 Változások
+
+=== parent-oss-pom
+
+* Maven central limitek miatt a továbbiakban opcionális checksumok (`SHA-256` és `SHA-512`) nem kerülnek kiadásra.
+
+==== Átállás
+
+Ahol van checksum ellenőrzés (pl. download scriptek), ott a scriptet `SHA-1` vagy `MD5` ellenőrzésekre kell átállni, mivel ezek továbbra is elérhetőek lesznek a Maven Central-on.
