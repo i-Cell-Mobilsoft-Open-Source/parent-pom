@@ -11,3 +11,13 @@ parent-pom v1.6.0 -> v1.7.0 Migration Description, New Features, and Changes Des
 ==== Migration
 
 Where checksum verification is performed (e.g., in download scripts), the script must be switched to `SHA-1` or `MD5` verification, as these will continue to be available on Maven Central.
+
+== Changes in v1.7.0
+
+=== parent-oss-pom
+
+* Changed maven central plugin configuration to wait until `validated` phase, instead of `published`, in order to reduce ci action timeout issues.
+
+==== Migration
+
+* No migration is required, but it is recomended to check publishing status in the Maven Central Portal.

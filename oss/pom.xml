@@ -84,7 +84,7 @@
 					<extensions>true</extensions>
 					<configuration>
 						<autoPublish>true</autoPublish>
-						<waitUntil>published</waitUntil>
+						<waitUntil>validated</waitUntil>
 						<checksums>required</checksums>
 					</configuration>
 				</plugin>
